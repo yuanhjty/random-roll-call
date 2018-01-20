@@ -7,7 +7,7 @@
   const fileLabel = document.querySelector('#file+label');
 
   // 数据
-  const students = [];
+  const names = [];
   let currentItem = rollItems[1];
   let intervalHandle = null;
 
@@ -65,15 +65,14 @@
               });
               let sheets = workbook.Sheets;
 
-              students.length = 0;
+              names.length = 0;
               for (let sheet in sheets) {
                 if (sheets.hasOwnProperty(sheet)) {
-                  students.push(XLSX.utils.sheet_to_json(sheets[sheet]));
+                  names.push(XLSX.utils.sheet_to_json(sheets[sheet]));
                 }
               }
 
               resetRollItems();
-
               resolve();
             } catch (error) {
               reject(error);
@@ -114,7 +113,7 @@
 
       toggleButton(controlButton);
       intervalHandle = setInterval(() => {
-        randRoll(students[0].map(item => item['姓名']));
+        randRoll(names[0].map(item => item['姓名']));
       }, 2);
     }
   }
