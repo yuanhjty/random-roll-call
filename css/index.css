@@ -1,0 +1,123 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: lightskyblue;
+}
+
+*,
+*::after {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 350px;
+  height: 500px;
+  margin: auto;
+  padding: 100px 20px;
+  background-color: lightskyblue;
+}
+
+.panel {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: orange;
+}
+
+.screen {
+  position: relative;
+  width: 180px;
+  height: 50px;
+  margin: 20px auto;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  font-size: 2rem;
+  background-color: lightyellow;
+  border: inset black 1px;
+}
+
+.roll-item {
+  position: absolute;
+  left: 0px;
+  width: 180px;
+  line-height: 50px;
+  background-color: transparent;
+}
+
+.roll-item:nth-of-type(1) {
+  top: -50px;
+}
+
+.roll-item:nth-of-type(2) {
+  top: 0px;
+}
+
+.roll-item:nth-of-type(3) {
+  top: 50px;
+}
+
+.control-btn {
+  width: 48px;
+  height: 48px;
+  margin: 5px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-origin: border-box;
+  background-position: center;
+  cursor: pointer;
+}
+
+.control-btn:hover {
+  box-shadow: inset 0 1px 10px white;
+  cursor: pointer;
+}
+
+.control-btn:active {
+  transform: translateY(3px);
+}
+
+.control-btn:focus {
+  outline: none;
+}
+
+.start-btn {
+  background-image: url('../img/start.png');
+}
+
+.stop-btn {
+  background-image: url('../img/stop.png');
+}
+
+#file {
+  position: absolute;
+  z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  background-color: transparent;
+}
+
+#file+label {
+  display: inline-block;
+  line-height: 40px;
+  width: 150px;
+  margin: 20px auto;
+  padding: 0;
+  border-radius: 5px;
+  background-color: gainsboro;
+}
+
+#file+label:hover {
+  box-shadow: inset 0 1px 10px gray;
+  cursor: pointer;
+}
+
+#file+label:active {
+  transform: translateY(3px);
+}
