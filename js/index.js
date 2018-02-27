@@ -100,6 +100,7 @@
       clearInterval(intervalHandle);
       intervalHandle = null;
 
+      // 滚动停止时，让 currentItem 停靠到视窗中央
       if (currentItem.offsetTop > 0) {
         let delta = currentItem.offsetTop;
         rollItems.forEach((number) => {
