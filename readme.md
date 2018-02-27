@@ -11,3 +11,6 @@
 ## 输入文件说明
 1. 输入的 Excel 文件中只能有一个 Sheet
 2. 输入的 Excel 文件中必须包含姓名列，该列表头在第一行，表头内容为 “姓名”
+
+## 示例截图
+![demo](http://oyzng2o2u.bkt.clouddn.com/randomRollCallDemo.PNG)
