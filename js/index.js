@@ -66,7 +66,7 @@
 
     if (!file) {
       // do nothing
-    } else if (!/[\w\-]+\.xl(s[xmb]|t[xm]|am)$/.test(file.name)) {
+    } else if (!/\.xl(s[xmb]|t[xm]|am)$/.test(file.name)) {
       alert('请选择 Excel 文件');
     } else {
       fileLabel.firstChild.nodeValue = file.name;

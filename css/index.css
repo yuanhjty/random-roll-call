@@ -121,3 +121,8 @@ body {
 #file+label:active {
   transform: translateY(3px);
 }
+
+.description {
+  width: 600px;
+  margin: auto;
+}
