@@ -1,5 +1,4 @@
 (() => {
-
   // 获取要操作的 DOM 元素
   const rollItems = document.querySelectorAll('.roll-item');
   const controlButton = document.querySelector('.control-btn');
@@ -7,7 +6,20 @@
   const fileLabel = document.querySelector('#file+label');
 
   // 数据
-  const names = [];
+  const names = [
+    [
+      { 姓名: 'AAA' },
+      { 姓名: 'BBB' },
+      { 姓名: 'CCC' },
+      { 姓名: 'DDD' },
+      { 姓名: 'EEE' },
+      { 姓名: 'FFF' },
+      { 姓名: 'GGG' },
+      { 姓名: 'HHH' },
+      { 姓名: 'III' },
+      { 姓名: 'JJJ' }
+    ]
+  ];
   let currentItem = rollItems[1];
   let intervalHandle = null;
 
@@ -17,7 +29,7 @@
   }
 
   function resetRollItems(params) {
-    rollItems.forEach((item) => {
+    rollItems.forEach(item => {
       item.firstChild.nodeValue = ' ';
     });
   }
@@ -38,7 +50,9 @@
       let top = item.offsetTop;
       item.style.top = top - 1 + 'px';
       if (item.offsetTop < -50) {
-        item.firstChild.nodeValue = `${contents[getRandNumber(0, contents.length)]}`;
+        item.firstChild.nodeValue = `${
+          contents[getRandNumber(0, contents.length)]
+        }`;
         item.style.top = '101px';
         currentItem = items[(index + 2) % 3];
       }
@@ -57,34 +71,34 @@
     } else {
       fileLabel.firstChild.nodeValue = file.name;
       new Promise((resolve, reject) => {
-          fileReader.onload = function(progressEvent) {
-            try {
-              let data = progressEvent.target.result;
-              let workbook = XLSX.read(data, {
-                type: 'binary'
-              });
-              let sheets = workbook.Sheets;
+        fileReader.onload = function(progressEvent) {
+          try {
+            let data = progressEvent.target.result;
+            let workbook = XLSX.read(data, {
+              type: 'binary'
+            });
+            let sheets = workbook.Sheets;
 
-              names.length = 0;
-              for (let sheet in sheets) {
-                if (sheets.hasOwnProperty(sheet)) {
-                  names.push(XLSX.utils.sheet_to_json(sheets[sheet]));
-                }
+            names.length = 0;
+            for (let sheet in sheets) {
+              if (sheets.hasOwnProperty(sheet)) {
+                names.push(XLSX.utils.sheet_to_json(sheets[sheet]));
               }
-
-              resetRollItems();
-              resolve();
-            } catch (error) {
-              reject(error);
             }
-          }
 
-          fileReader.readAsBinaryString(file);
-        })
+            resetRollItems();
+            resolve();
+          } catch (error) {
+            reject(error);
+          }
+        };
+
+        fileReader.readAsBinaryString(file);
+      })
         .then(() => {
           controlButton.disabled = false;
         })
-        .catch((error) => {
+        .catch(error => {
           throw error;
         });
     }
@@ -103,7 +117,7 @@
       // 滚动停止时，让 currentItem 停靠到视窗中央
       if (currentItem.offsetTop > 0) {
         let delta = currentItem.offsetTop;
-        rollItems.forEach((number) => {
+        rollItems.forEach(number => {
           let top = number.offsetTop;
           number.style.top = top - delta + 'px';
         });
@@ -121,5 +135,4 @@
 
   fileInput.addEventListener('change', handleFileInput);
   controlButton.addEventListener('click', handleButtonClick);
-
 })();
