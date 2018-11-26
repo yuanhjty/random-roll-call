@@ -13,4 +13,4 @@
 2. 输入的 Excel 文件中必须包含姓名列，该列表头在第一行，表头内容为 “姓名”
 
 ## 示例截图
-![demo](http://oyzng2o2u.bkt.clouddn.com/randomRollCallDemo.PNG)
+![demo](https://image-hosting-1256256014.cos.ap-shanghai.myqcloud.com/randomRollCallDemo.PNG)
